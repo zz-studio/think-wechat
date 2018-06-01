@@ -7,7 +7,7 @@
 ### 第一步 使用composer下载SDK
 
 ```bash
-composer require zz-studio/think-wechat
+composer require zzstudio/think-wechat
 ```
 
 ### 第二步 发布配置文件到TP目录
