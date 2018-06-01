@@ -1,0 +1,26 @@
+{
+    "name": "zz-studio/think-wechat",
+    "description": "微信 SDK for thinkphp5.1, 基于 overtrue/wechat",
+    "keywords": ["wechat", "weixin","thinkphp5"],
+    "authors": [
+        {
+            "name": "byron sampson",
+            "email": "xiaobo.sun@qq.com"
+        }
+    ],
+    "require": {
+        "overtrue/wechat": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "think\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "post-install-cmd": [
+        "think\\Wechat\\ComposerScripts::sendConfig"
+    ],
+    "license": "Apache-2.0"
+}
