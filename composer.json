@@ -1,5 +1,5 @@
 {
-    "name": "zz-studio/think-wechat",
+    "name": "zzstudio/think-wechat",
     "description": "微信 SDK for thinkphp5.1, 基于 overtrue/wechat",
     "keywords": ["wechat", "weixin","thinkphp5"],
     "authors": [
