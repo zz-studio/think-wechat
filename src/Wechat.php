@@ -44,6 +44,10 @@ class Wechat
             if (!$options) {
                 throw new \InvalidArgumentException("missing wechat config");
             }
+            // 合并模块个性配置
+            if (is_array($options[$name])) {
+                $options = array_merge($options, $options[$name]);
+            }
             self::$app[$name] = Factory::$name($options);
         }
         return self::$app[$name];
