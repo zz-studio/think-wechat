@@ -37,16 +37,30 @@ class Wechat
 {
     protected static $app = [];
 
+    /**
+     * 静态调用魔术方法
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
     public static function __callStatic($name, $arguments)
     {
-        $options = Config::get('wechat.');
         if (!isset(self::$app[$name])) {
-            if (!$options) {
-                throw new \InvalidArgumentException("missing wechat config");
+            // 查看是否有个性配置
+            $options = [];
+            if (isset($arguments[0]) && is_array($arguments[0])) {
+                $options = $arguments[0];
             }
-            // 合并模块个性配置
-            if (is_array($options[$name])) {
-                $options = array_merge($options, $options[$name]);
+            // 使用自定义配置
+            if (empty($options)) {
+                $options = Config::get('wechat.');
+                if (!$options) {
+                    throw new \InvalidArgumentException("missing wechat config");
+                }
+                if (is_array($options[$name])) {
+                    // 合并模块个性配置
+                    $options = array_merge($options, $options[$name]);
+                }
             }
             self::$app[$name] = Factory::$name($options);
         }
