@@ -57,7 +57,7 @@ class Wechat
                 if (!$options) {
                     throw new \InvalidArgumentException("missing wechat config");
                 }
-                if (is_array($options[$name])) {
+                if (isset($options[$name]) && is_array($options[$name])) {
                     // 合并模块个性配置
                     $options = array_merge($options, $options[$name]);
                 }
